@@ -1,24 +1,26 @@
 const roomButtons = document.getElementById("roomButtons");
 const roomsBlock = document.getElementById("rooms");
 
+const renderMessage = (message, messageId, id) => {
+    this.messages = document.getElementById(`${id}Messages`);
+
+    let html = `<li class="message" id="${messageId}">
+                <span class="name">${message.username}</span> <span>${message.message}</span>
+                <div class="date">${message.started_at}</div>
+            </li>`;
+
+    messages.innerHTML += html;
+};
+
 const renderRoom = (room) =>{
 
     let htmlButton = `<button class="" id="${room.id}Button">${room.name}</button>`;
-    let htmlRoom = `<div class="chat d-none" id="${room.id}">
-                    <h2>${room.name}</h2>
-                    <ul class="messages">
-                    </ul>
-                </div>
-                `;
+    let htmlRoom = room.list;
     roomButtons.innerHTML += htmlButton;
     roomsBlock.innerHTML += htmlRoom;
 
     };
 
-
-const udateUI = (changes) => {
-    console.log(changes);
-};
 
 const showRoom = (target) => {
     let rooms = document.getElementsByClassName("chat");
@@ -38,7 +40,6 @@ const showRoom = (target) => {
 
     rooms = Array.from(rooms);
 
-    console.log(rooms);
     rooms.forEach(room =>{
         if(target.id.includes(room.id)){
             const roomToShow = document.getElementById(room.id);
@@ -59,4 +60,5 @@ roomButtons.addEventListener("click", e => {
     showRoom(e.target);
 
 });
+
 

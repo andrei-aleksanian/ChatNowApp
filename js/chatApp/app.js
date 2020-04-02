@@ -10,16 +10,16 @@ class App{
 
     async getUsers(){
         const response = await db.collection("users").get();
-        const data = await response.docs;
+        const docs = await response.docs;
 
-        return data;
+        return docs;
     }
 
     async getRooms(){
         const response = await db.collection("rooms").get();
-        const data = await response.docs;
+        const docs = await response.docs;
 
-        return data;
+        return docs;
     }
 
     setupUser(doc){
@@ -31,6 +31,7 @@ class App{
 
     setupRoom(doc){
         const room = doc.data();
+        // console.log(room, doc);
 
         const new_room = new Chat(room.name, doc.id);
         this.allRooms.push(new_room);
@@ -58,9 +59,21 @@ chat_now.getRooms()
             chat_now.setupRoom(doc);
         });
         console.log("all rooms added from database");
-        const button = document.getElementById("G7AMPliMVCISNZMY4vXBButton");
+
+        const button = document.getElementById("G7AMPliMVCISNZMY4vXBButton");  // general chat key
         showRoom(button);
+
+        chat_now.allRooms.forEach(room => {
+
+            // I get and then display messages from the database
+            room.getMessages()
+                .then(docs => {
+                    docs.forEach(doc => {
+                        room.displayMessage(doc);
+                    });
+                })
+                .catch(err => console.log(err));
+        });
+
     })
     .catch(err => console.log(err));
-
-
