@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/chatapp.css">
+
+    <meta charset="UTF-8">
+    <title>OOP</title>
+</head>
+
+<body>
+
+<header>
+    <div class="logo"><a href="index.html">OOP Learning</a></div>
+    <div class="navs">
+        <a href="databases.html">Databases</a>
+        <a href="chatroom.html">Chat room</a>
+        <a href="https://andrei-aleksanian.herokuapp.com/">About</a>
+    </div>
+</header>
+
+<main>
+    <div class="wrapper">
+
+        <div class="chatappheader">
+            <h2>Choose a chat room!</h2>
+            <nav id="roomButtons">
+            </nav>
+        </div>
+
+        <div id="rooms">
+
+        </div>
+
+<!--        <div class="chat" id="general">-->
+<!--            <ul class="messages" id="generalMessages">-->
+<!--                <li class="message">-->
+<!--                    <span class="name">name</span> <span>message</span>-->
+<!--                    <div class="date">1 min ago</div>-->
+<!--                </li>-->
+<!--                <li class="message">-->
+<!--                    <span class="name">name</span> <span>message</span>-->
+<!--                    <div class="date">1 min ago</div>-->
+<!--                </li>-->
+<!--            </ul>-->
+<!--        </div>-->
+
+<!--        <div class="chat d-none" id="funnyVideos">-->
+<!--            <ul class="messages">-->
+<!--            </ul>-->
+<!--        </div>-->
+
+<!--        <div class="chat d-none" id="music">-->
+<!--            <ul class="messages">-->
+<!--            </ul>-->
+<!--        </div>-->
+
+        <div class="forms">
+
+            <form id="addMessageForm" class="">
+                <label class="label" for="addMessage">Send a message:</label>
+                <input type="text" name="addMessage" id="addMessage" required>
+                <input class="button" type="submit" value="Add">
+            </form>
+
+            <form id="changeNameForm">
+                <label class="label" for="changeName">Change your name:</label>
+                <input type="text" name="changeName" id="changeName" required>
+                <input class="button" type="submit" value="Add">
+            </form>
+
+        </div>
+
+
+    </div>
+
+</main>
+
+<footer>
+
+</footer>
+
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-firestore.js"></script>
+
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-analytics.js"></script>
+
+<script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+        apiKey: "AIzaSyC5q-2mVMBeG4kWM0MAUCPIRFwssS0VQCc",
+        authDomain: "chat-now-4f0c2.firebaseapp.com",
+        databaseURL: "https://chat-now-4f0c2.firebaseio.com",
+        projectId: "chat-now-4f0c2",
+        storageBucket: "chat-now-4f0c2.appspot.com",
+        messagingSenderId: "408228187615",
+        appId: "1:408228187615:web:4671a003b303168012886a",
+        measurementId: "G-YMVGBM3G11"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+    const db = firebase.firestore();
+</script>
+
+<script src="../js/chatApp/chat.js"></script>
+<script src="../js/chatApp/ui.js"></script>
+<script src="../js/chatApp/user.js"></script>
+<script src="../js/chatApp/app.js"></script>
+
+</body>
+</html>

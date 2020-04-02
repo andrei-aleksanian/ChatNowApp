@@ -1,0 +1,163 @@
+*:focus{
+    outline:0;
+}
+
+h2{
+    text-align: center;
+    font-size: 30px;
+    padding-bottom: 20px;
+}
+
+form{
+    display: flex;
+    flex-wrap: nowrap;
+    line-height: 16px;
+
+    margin: 10px;
+    border-radius: 5px;
+
+    transition: all 0.3s ease-in-out;
+
+}
+
+.label{
+    line-height: 25px;
+    font-size: 20px;
+    padding: 5px;
+    border: solid #1BE3D2 1px;
+    border-radius: 5px 0 0 5px;
+    background: #1BE3D2;
+    color: #fff;
+
+    flex-basis: auto;
+
+}
+
+#addMessage{
+    font-family: "Segoe UI", sans-serif;
+    flex-grow: 1;
+    font-size: 125%;
+    border: solid #1BE3D2 1px;
+
+}
+
+#changeName{
+    font-family: "Segoe UI", sans-serif;
+    font-size: 125%;
+
+    flex-grow: 1;
+    border: solid #1BE3D2 1px;
+
+}
+
+
+
+.focused{
+    -webkit-box-shadow: 0px 0px 10px 0px rgba(21,179,165,1);
+    -moz-box-shadow: 0px 0px 10px 0px rgba(21,179,165,1);
+    box-shadow: 0px 0px 10px 0px rgba(21,179,165,1);
+
+}
+
+/*.focusedField{*/
+/*    outline: #00EBDB solid 1px;*/
+
+/*}*/
+
+.button{
+    cursor: pointer;
+    font-size: 20px;
+    padding: 0 5px;
+    background: #1BE3D2;
+    color: #fff;
+    border: solid #1BE3D2 1px;
+    border-radius: 0 5px 5px 0;
+
+}
+
+.button:hover{
+    background-color: #71CCBD;
+    border-color: #71CCBD;
+
+}
+
+.button:active{
+    background-color: #5BA699;
+    border-color: #5BA699;
+
+}
+
+#roomButtons{
+    display: flex;
+    justify-content: center;
+}
+
+#roomButtons button{
+    display: flex;
+    padding: 10px;
+    margin: 0 10px;
+    background-color: #1BE3D2;
+    color: #fff;
+
+    border:none;
+    border-radius: 5px;
+}
+
+#roomButtons button:hover{
+    background-color: #71CCBD;
+    cursor: pointer;
+
+}
+
+#roomButtons button:active{
+    background-color: #5BA699;
+    border-color: #5BA699;
+
+}
+
+.pressed{
+    background-color: #71CCBD !important;
+}
+
+.chat li{
+    padding: 10px;
+    border: solid #35B4F0 1px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.chat li:hover{
+    color: #fff;
+    background-color: #386AE8;
+    -webkit-box-shadow: 0 0 20px 0 rgba(17,17,17,0.7);
+    -moz-box-shadow: 0 0 20px 0 rgba(17,17,17,0.7);
+    box-shadow: 0 0 20px 0 rgba(17,17,17,0.7);
+}
+
+.chatSelected{
+    color: #fff;
+    background-color: #386AE8;
+    -webkit-box-shadow: 0 0 20px 0 rgba(17,17,17,0.7);
+    -moz-box-shadow: 0 0 20px 0 rgba(17,17,17,0.7);
+    box-shadow: 0 0 20px 0 rgba(17,17,17,0.7);
+}
+
+.chat li:hover *{
+    color: #fff;
+}
+
+.date{
+    margin:0;
+    padding:0 !important;
+    color: grey;
+    font-size: 70%;
+}
+
+.name{
+    font-size: 110%;
+    font-weight: bold;
+}
+
+.d-none{
+    display:none;
+}
