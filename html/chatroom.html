@@ -6,13 +6,13 @@
     <link rel="stylesheet" href="../css/chatapp.css">
 
     <meta charset="UTF-8">
-    <title>OOP</title>
+    <title>Chat Now</title>
 </head>
 
 <body>
 
 <header>
-    <div class="logo"><a href="index.html">OOP Learning</a></div>
+    <div class="logo"><a href="index.html">Chat Now</a></div>
     <div class="navs">
         <a href="databases.html">Databases</a>
         <a href="chatroom.html">Chat room</a>
@@ -21,7 +21,7 @@
 </header>
 
 <main>
-    <div class="wrapper">
+    <div id="wrapper">
 
         <div class="chatappheader">
             <h2>Choose a chat room!</h2>
@@ -32,29 +32,6 @@
         <div id="rooms">
 
         </div>
-
-<!--        <div class="chat" id="general">-->
-<!--            <ul class="messages" id="generalMessages">-->
-<!--                <li class="message">-->
-<!--                    <span class="name">name</span> <span>message</span>-->
-<!--                    <div class="date">1 min ago</div>-->
-<!--                </li>-->
-<!--                <li class="message">-->
-<!--                    <span class="name">name</span> <span>message</span>-->
-<!--                    <div class="date">1 min ago</div>-->
-<!--                </li>-->
-<!--            </ul>-->
-<!--        </div>-->
-
-<!--        <div class="chat d-none" id="funnyVideos">-->
-<!--            <ul class="messages">-->
-<!--            </ul>-->
-<!--        </div>-->
-
-<!--        <div class="chat d-none" id="music">-->
-<!--            <ul class="messages">-->
-<!--            </ul>-->
-<!--        </div>-->
 
         <div class="forms">
 
@@ -108,8 +85,9 @@
     const db = firebase.firestore();
 </script>
 
-<script src="../js/chatApp/ui.js"></script>
+<script src="http://cdn.date-fns.org/v1.9.0/date_fns.min.js"></script>
 <script src="../js/chatApp/chat.js"></script>
+<script src="../js/chatApp/ui.js"></script>
 <script src="../js/chatApp/user.js"></script>
 <script src="../js/chatApp/app.js"></script>
 

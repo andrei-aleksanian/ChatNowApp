@@ -1,26 +1,38 @@
 const roomButtons = document.getElementById("roomButtons");
 const roomsBlock = document.getElementById("rooms");
+const sendMessageForm = document.getElementById("addMessageForm");
+const changeNicknameFrom = document.getElementById("changeNameForm");
+
+const allRoomNames = new Set();
 
 const renderMessage = (message, messageId, id) => {
-    this.messages = document.getElementById(`${id}Messages`);
+    const messages = document.getElementById(`${id}Messages`);
+    const when = dateFns.distanceInWordsToNow(
+        message.started_at.toDate(),
+        {addSuffix: true}
+    );
 
     let html = `<li class="message" id="${messageId}">
                 <span class="name">${message.username}</span> <span>${message.message}</span>
-                <div class="date">${message.started_at}</div>
+                <div class="date">${when}</div>
             </li>`;
 
     messages.innerHTML += html;
 };
 
 const renderRoom = (room) =>{
-
+    console.log(room);
     let htmlButton = `<button class="" id="${room.id}Button">${room.name}</button>`;
     let htmlRoom = room.list;
     roomButtons.innerHTML += htmlButton;
     roomsBlock.innerHTML += htmlRoom;
+    allRoomNames.add(room);
 
     };
 
+const render_name = () =>{
+    // show little name on top of forms
+};
 
 const showRoom = (target) => {
     let rooms = document.getElementsByClassName("chat");
@@ -53,12 +65,9 @@ const showRoom = (target) => {
         }
     });
 };
-// const chats = new Chat();
 
 roomButtons.addEventListener("click", e => {
     e.preventDefault();
     showRoom(e.target);
 
 });
-
-

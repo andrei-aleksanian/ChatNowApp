@@ -79,9 +79,10 @@ main{
     height: 92%;
 }
 
-.wrapper{
+#wrapper{
     width: 700px;
-    height: 100%;
+    min-height: 100%;
+    height:auto;
     margin: 0 auto;
     padding: 0 70px;
 
@@ -90,11 +91,11 @@ main{
     box-shadow: 0px 0px 100px 0px rgba(214,214,214,1);
 }
 
-.wrapper div{
+#wrapper div{
     padding: 3% 0;
 }
 
-.wrapper div ul{
+#wrapper div ul{
     padding: 1% 0;
 }
 

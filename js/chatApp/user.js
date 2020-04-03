@@ -1,16 +1,8 @@
 class User{
 
-    constructor(name, id) {
+    constructor(name) {
         this.name = name;
-        this.id = id;
+        this.id = name;
         this.messages = [];
-
-        this.allUsers = db.collection("users");
     }
-
-    userExists(){
-        // how to check if its old or new user?
-        console.log();
-    }
-
 }

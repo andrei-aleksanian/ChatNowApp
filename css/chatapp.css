@@ -129,6 +129,7 @@ form{
 .chat li:hover{
     color: #fff;
     background-color: #386AE8;
+    border-color: #386AE8;
     -webkit-box-shadow: 0 0 20px 0 rgba(17,17,17,0.7);
     -moz-box-shadow: 0 0 20px 0 rgba(17,17,17,0.7);
     box-shadow: 0 0 20px 0 rgba(17,17,17,0.7);

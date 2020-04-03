@@ -1,33 +1,44 @@
 class Chat{
 
-    constructor(name, id) {
+    constructor(name) {
         this.name = name;
-        this.id = id;
+        this.id = name;
         this.list = `<div class="chat d-none" id="${this.id}">
                         <h2>${this.name}</h2>
                         <ul id="${this.id}Messages" class="messages">
                         </ul>
                      </div>`;
+        this.messages = [];
     }
 
-    sortByTimeStamp(){
-        // done on snapshot listeners?
-        // probably
+    sortByTimeStamp(messages){
+
+        messages.sort( (a,b) => {
+            return a.started_at.seconds - b.started_at.seconds;
+        });
+        messages.forEach(message => {
+            renderMessage(message, this.name, this.name);
+
+        });
     }
 
-    async getMessages(){
-        const messages = await db.collection("rooms").doc(this.id)
-                                .collection("messages").get();
-        const docs = await messages.docs;
+    getMessage(message){
+        this.messages.push(message);
 
-        return docs;
-    }
-
-    displayMessage(doc){
-        const message = doc.data();
-
-        renderMessage(message, doc.id, this.id);
         return this;
+    }
+
+    addMessage(text, username="anon") {
+        const now = new Date();
+        const started_at = firebase.firestore.Timestamp.fromDate(now);
+        const message = {
+          message: text,
+          username: username,
+          room: this.name,
+          started_at
+        };
+        db.collection("chats").add(message);
+
     }
 
 }
