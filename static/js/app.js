@@ -38,18 +38,18 @@ class App{
         return document.getElementById(`${id}Button`);
     }
 
-    createUser(name){
-        const new_user = new User(name);
-        this.allUsers.push(new_user);
-        return this;
-    }
-
-    change_name(name){
-        const names = this.allUsers.map(n => {return n.name});
-        if(!names.includes(name)){
-            this.createUser(name);
-        }
-    }
+    // createUser(name){
+    //     const new_user = new User(name);
+    //     this.allUsers.push(new_user);
+    //     return this;
+    // }
+    //
+    // change_name(name){
+    //     const names = this.allUsers.map(n => {return n.name});
+    //     if(!names.includes(name)){
+    //         this.createUser(name);
+    //     }
+    // }
 
 }
 
@@ -120,7 +120,7 @@ changeNicknameFrom.addEventListener("submit", e => {
     e.preventDefault();
     const name = changeNicknameFrom.changeName.value.trim();
 
-    chat_now.change_name(name);
+    // chat_now.change_name(name);
     localStorage.setItem("username", name);
 
     render_name();

@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e0da5ab3-2c37-4699-a696-3cd0cee82600" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/static/js/datefns.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/chatroom.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/chatroom.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/app.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,7 +68,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1586018261760</updated>
-      <workItem from="1586018285021" duration="1197000" />
+      <workItem from="1586018285021" duration="1438000" />
     </task>
     <servers />
   </component>
