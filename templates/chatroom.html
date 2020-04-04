@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="../static/css/chatapp.css">
+
+    <meta charset="UTF-8">
+    <title>Chat Now</title>
+</head>
+
+<body>
+
+<header>
+    <div class="logo"><a href="chatroom.html">Chat Now</a></div>
+    <div class="navs">
+        <a href="https://weather-forecast-today.herokuapp.com/">Weather Today</a>
+        <a href="https://andrei-aleksanian.herokuapp.com/contact">Contact</a>
+        <a href="https://andrei-aleksanian.herokuapp.com/">About</a>
+    </div>
+</header>
+
+<main>
+    <div id="wrapper">
+
+        <div class="chatappheader">
+            <h2>Choose a chat room!</h2>
+            <nav id="roomButtons">
+            </nav>
+        </div>
+
+        <div id="rooms">
+
+        </div>
+
+        <div id="forms">
+            <h3>Your name: <span id="username"></span></h3>
+            <form id="addMessageForm" class="">
+                <label class="label" for="addMessage">Send a message:</label>
+                <input type="text" name="addMessage" id="addMessage" required>
+                <input class="button" type="submit" value="Add">
+            </form>
+
+            <form id="changeNameForm">
+                <label class="label" for="changeName">Change your name:</label>
+                <input type="text" name="changeName" id="changeName" required>
+                <input class="button" type="submit" value="Add">
+            </form>
+
+        </div>
+
+
+    </div>
+
+    <nav id="sideBar">
+        <h2>Rooms:</h2>
+        <div id="roomButtonsSideBar">
+
+        </div>
+    </nav>
+
+</main>
+
+<footer>
+
+</footer>
+
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-firestore.js"></script>
+
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-analytics.js"></script>
+
+<script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+        apiKey: "AIzaSyC5q-2mVMBeG4kWM0MAUCPIRFwssS0VQCc",
+        authDomain: "chat-now-4f0c2.firebaseapp.com",
+        databaseURL: "https://chat-now-4f0c2.firebaseio.com",
+        projectId: "chat-now-4f0c2",
+        storageBucket: "chat-now-4f0c2.appspot.com",
+        messagingSenderId: "408228187615",
+        appId: "1:408228187615:web:4671a003b303168012886a",
+        measurementId: "G-YMVGBM3G11"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+    const db = firebase.firestore();
+</script>
+
+<script src="http://cdn.date-fns.org/v1.9.0/date_fns.min.js"></script>
+<script src="../static/js/chat.js"></script>
+<script src="../static/js/ui.js"></script>
+<script src="../static/js/app.js"></script>
+
+</body>
+</html>
