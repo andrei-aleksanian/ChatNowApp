@@ -8,13 +8,10 @@ class App{
         this.start = true;
     }
 
-    updateMessage(doc){
-        const data = doc.data();
+    updateMessage(data){
         this.allRooms.forEach(room => {
            if(room.name === data.room){
                room.getMessage(data);
-           }else{
-               console.log("chat doesn't exist");
            }
 
         });
@@ -41,10 +38,6 @@ class App{
         return document.getElementById(`${id}Button`);
     }
 
-    deleteMessage(doc){
-        db.collection("chats").doc(doc.id).delete();
-    }
-
     createUser(name){
         const new_user = new User(name);
         this.allUsers.push(new_user);
@@ -62,22 +55,26 @@ class App{
 
 // Setting up existing rooms and users
 const chat_now = new App();
+render_name();
+
 
 // Fire on every database update
 const stopRealTimeUpdates = db.collection("chats").onSnapshot(sn => {
     let messages = [];
+    let deletedMessages = [];
     let room_exists = false;
 
     sn.docChanges().forEach(change => {
        if(change.type === "added"){
            const data = change.doc.data();
-            messages.push(data);
+           let message = data;
+           message["docId"] = change.doc.id;
+           messages.push(message);
            // getting messageS
            // if room exists already
            chat_now.allRooms.forEach(room => {
                if (room.name === data.room){
-
-                   chat_now.updateMessage(change.doc);
+                   chat_now.updateMessage(message);
                    room_exists = true;
                }
            });
@@ -86,9 +83,18 @@ const stopRealTimeUpdates = db.collection("chats").onSnapshot(sn => {
            // if it didn't exist before
            if(!room_exists){
                chat_now.setupRoom(change.doc);
-               chat_now.updateMessage(change.doc);
+               chat_now.updateMessage(message);
            }
-            room_exists = false;
+           room_exists = false;
+       }else if (change.type === "removed"){
+           const data = change.doc.data();
+
+           chat_now.allRooms.forEach(room => {
+               const roomName = data.room;
+              if (roomName === room.name){
+                  unrenderTopMessage(roomName);
+              }
+           });
        }
     });
 
@@ -98,16 +104,15 @@ const stopRealTimeUpdates = db.collection("chats").onSnapshot(sn => {
     chat_now.allRooms.forEach(room => {
         const oneRoomMessages = messages.filter(m => m.room === room.name);
 
+        if(oneRoomMessages){
+            room.sortByTimeStamp(oneRoomMessages);
+        }
+
         if(room.name === "General" && chat_now.start){
             showRoom(chat_now.getGeneralButton());
             chat_now.start = false;
         }
 
-        if(oneRoomMessages){
-            console.log(oneRoomMessages);
-            room.sortByTimeStamp(oneRoomMessages);
-
-        }
     });
 });
 
@@ -120,7 +125,6 @@ changeNicknameFrom.addEventListener("submit", e => {
 
     render_name();
     changeNicknameFrom.reset();
-
 });
 
 sendMessageForm.addEventListener("submit", e => {
@@ -129,7 +133,7 @@ sendMessageForm.addEventListener("submit", e => {
     const text = sendMessageForm.addMessage.value.trim();
     const username =  localStorage.getItem("username") ? localStorage.getItem("username") : "anon";
 
-    allRoomNames.forEach(room =>{
+    chat_now.allRooms.forEach(room =>{
         if(room.name === currentRoomName){
             room.addMessage(text, username);
         }

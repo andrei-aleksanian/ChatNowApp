@@ -1,9 +1,16 @@
 const roomButtons = document.getElementById("roomButtons");
+const roomButtonsSide = document.getElementById("roomButtonsSideBar");
 const roomsBlock = document.getElementById("rooms");
 const sendMessageForm = document.getElementById("addMessageForm");
 const changeNicknameFrom = document.getElementById("changeNameForm");
 
 const allRoomNames = new Set();
+
+const unrenderTopMessage = (roomName) =>{
+    const room = document.getElementById(`${roomName}Messages`);
+
+    room.children[0].remove();
+};
 
 const renderMessage = (message, messageId, id) => {
     const messages = document.getElementById(`${id}Messages`);
@@ -21,10 +28,12 @@ const renderMessage = (message, messageId, id) => {
 };
 
 const renderRoom = (room) =>{
-    console.log(room);
     let htmlButton = `<button class="" id="${room.id}Button">${room.name}</button>`;
+    let htmlButtonSide = `<button class="" id="${room.id}ButtonSide">${room.name}</button>`;
+
     let htmlRoom = room.list;
     roomButtons.innerHTML += htmlButton;
+    roomButtonsSide.innerHTML += htmlButtonSide;
     roomsBlock.innerHTML += htmlRoom;
     allRoomNames.add(room);
 
@@ -32,23 +41,43 @@ const renderRoom = (room) =>{
 
 const render_name = () =>{
     // show little name on top of forms
+    const username = document.getElementById("username");
+    username.innerText =  localStorage.getItem("username") ? localStorage.getItem("username") : "anon";
+};
+
+const colourButtons = (buttons, buttonsSide, target) => {
+    buttons.forEach(button => {
+       button.classList.remove("pressed");
+       if (!(target.classList[0] === "pressed")){
+           target.classList.add("pressed");
+
+           buttonsSide.forEach(buttonSide => {
+              buttonSide.classList.remove("pressed");
+              if(buttonSide.id === `${button.id}Side` || button.id === `${buttonSide.id}Side`){
+                  buttonSide.classList.add("pressed");
+              }
+           });
+       }
+    });
+};
+
+const showButton = (target) => {
+    let buttons = Array.from(roomButtons.children);
+    let buttonsSide = Array.from(roomButtonsSide.children);
+
+    if(target.parentElement.id === roomButtons.id) {
+        colourButtons(buttons, buttonsSide, target);
+
+    }else if (target.parentElement.id === roomButtonsSide.id){
+        colourButtons(buttonsSide, buttons, target);
+    }
+
 };
 
 const showRoom = (target) => {
     let rooms = document.getElementsByClassName("chat");
-
-    let buttons = Array.from(roomButtons.children);
-    if(target !== roomButtons){
-        buttons.forEach(button => {
-                button.classList.remove("pressed");
-                if (!(target.classList[0] === "pressed")) {
-                    target.classList.add("pressed");
-
-                }
-
-            }
-        );
-    }
+    showButton(target);
+    // showButton(target);
 
     rooms = Array.from(rooms);
 
@@ -70,4 +99,9 @@ roomButtons.addEventListener("click", e => {
     e.preventDefault();
     showRoom(e.target);
 
+});
+
+roomButtonsSide.addEventListener("click", e => {
+   e.preventDefault();
+   showRoom(e.target);
 });
